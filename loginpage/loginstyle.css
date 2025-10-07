@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom right, #F6981D, #FAC30F);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === TOPBAR === */
+.topbar {
+    width: 100%;
+    padding: 20px 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pantip-logo {
+    width: 240px;
+}
+
+/* === CENTER LOGIN BOX === */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.login-box {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    height: 460px;
+    /* Adjusted to match the picture proportions */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+/* === LOGO === */
+.logo {
+    width: 160px;
+    height: auto;
+    margin-bottom: 25px;
+    display: block;
+    object-fit: contain;
+}
+
+/* === FORM === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 280px;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ff9800;
+}
+
+.remember {
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: flex-start;
+}
+
+.login-btn {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+.read-mode {
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #0F93FF;
+    text-decoration: none;
+}
+
+.read-mode:hover {
+    text-decoration: underline;
+}
+
+/* === ERROR PAGE STYLE === */
+.error-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.error {
+    width: 120px;
+    height: auto;
+}
+
+.error-content h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.4;
+}
+
+.tryagain {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
