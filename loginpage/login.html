@@ -2,32 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSTU Login</title>
-    <link rel="stylesheet" href="loginstyle.css">
+    <link rel="stylesheet" href="loginstyle.css" />
 </head>
 
 <body>
     <div class="container">
+        <!-- Topbar -->
         <div class="topbar">
-            <div class="logo-text">
-                <img src="loginsource/panthip.png" alt="" class="pantip-logo">
-            </div>
+            <img src="loginsource/panthip.png" alt="Pantip Logo" class="pantip-logo" />
         </div>
+
+        <!-- Login Box -->
         <div class="login-box">
-            <img src="loginsource/cstu.jpg" alt="CS TU Logo" class="logo">
+            <img src="loginsource/cstu.jpg" alt="CS TU Logo" class="logo" />
 
             <form id="login-form">
-                <input type="text" placeholder="student-id" required>
+                <input id="studentId" type="text" placeholder="student-id" required />
 
-                <!-- password with toggle -->
+                <!-- Password field with toggle -->
                 <div class="password-field">
                     <input id="passwordInput" type="password" placeholder="Password" required
-                        aria-describedby="togglePwDesc">
+                        aria-describedby="togglePwDesc" />
                     <button type="button" id="togglePassword" class="toggle-pw" aria-pressed="false"
                         aria-label="Show password" title="Show password">
-                        <!-- simple SVG eye icon -->
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
                             focusable="false">
                             <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="currentColor"
@@ -38,8 +38,10 @@
                     <span id="togglePwDesc" class="sr-only">Toggle password visibility</span>
                 </div>
 
+                <p id="loginError" class="error-msg"></p>
+
                 <label class="remember">
-                    <input type="checkbox"> Remember me
+                    <input type="checkbox" /> Remember me
                 </label>
                 <button type="submit" class="login-btn">Log in</button>
             </form>

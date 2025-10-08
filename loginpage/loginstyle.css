@@ -1,3 +1,4 @@
+/* === RESET & GLOBAL === */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(to bottom right, #F6981D, #FAC30F);
+    background: linear-gradient(to bottom right, #f6981d, #fac30f);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,9 +28,10 @@ body {
 
 .pantip-logo {
     width: 240px;
+    height: auto;
 }
 
-/* === CENTER LOGIN BOX === */
+/* === MAIN CONTAINER === */
 .container {
     flex: 1;
     display: flex;
@@ -38,19 +40,20 @@ body {
     width: 100%;
 }
 
+/* === LOGIN BOX === */
 .login-box {
     background: white;
     border-radius: 18px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     width: 400px;
-    height: 460px;
-    /* Adjusted to match the picture proportions */
+    min-height: 460px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 40px;
+    animation: fadeIn 0.5s ease;
 }
 
 /* === LOGO === */
@@ -58,7 +61,6 @@ body {
     width: 160px;
     height: auto;
     margin-bottom: 25px;
-    display: block;
     object-fit: contain;
 }
 
@@ -73,106 +75,32 @@ form {
 
 input[type="text"],
 input[type="password"] {
+    width: 100%;
     padding: 10px 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
     outline: none;
-    transition: border 0.2s;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+input:focus {
     border-color: #ff9800;
+    box-shadow: 0 2px 6px rgba(255, 152, 0, 0.3);
 }
 
-.remember {
-    font-size: 13px;
-    color: #444;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    justify-content: flex-start;
+::placeholder {
+    color: #aaa;
 }
 
-.login-btn {
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 0;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
-}
-
-.login-btn:hover {
-    opacity: 0.9;
-}
-
-.read-mode {
-    display: block;
-    margin-top: 20px;
-    font-size: 12px;
-    color: #0F93FF;
-    text-decoration: none;
-}
-
-.read-mode:hover {
-    text-decoration: underline;
-}
-
-/* === ERROR PAGE STYLE === */
-.error-content {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.error {
-    width: 120px;
-    height: auto;
-}
-
-.error-content h2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #000;
-    line-height: 1.4;
-}
-
-.tryagain {
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 10px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
-}
-
-/* Password field with inline toggle */
+/* === PASSWORD FIELD === */
 .password-field {
     position: relative;
     width: 100%;
-    max-width: 280px;
 }
 
-.password-field input[type="password"],
-.password-field input[type="text"] {
-    width: 100%;
-    padding: 10px 40px 10px 12px;
-    /* leave space for the toggle at right */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    outline: none;
-    transition: border 0.2s;
-    box-sizing: border-box;
+.password-field input {
+    padding-right: 40px;
 }
 
 .toggle-pw {
@@ -189,6 +117,11 @@ input[type="password"]:focus {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.2s;
+}
+
+.toggle-pw:hover {
+    color: #000;
 }
 
 .toggle-pw:focus {
@@ -196,11 +129,109 @@ input[type="password"]:focus {
     outline-offset: 2px;
 }
 
-.toggle-pw:hover {
-    color: #000;
+/* === BUTTONS === */
+.login-btn {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s ease-in-out;
 }
 
-/* visually hidden helper for screen readers */
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+.login-btn.loading {
+    background: #555;
+    cursor: wait;
+}
+
+/* === REMEMBER + LINK === */
+.remember {
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: flex-start;
+}
+
+.read-mode {
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #0f93ff;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.read-mode:hover {
+    opacity: 0.8;
+}
+
+/* === INLINE ERROR (Enhanced Visuals) === */
+.error-msg {
+    display: none;
+    background: rgba(255, 0, 0, 0.08);
+    color: #d32f2f;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-top: -5px;
+    animation: fadeIn 0.3s ease forwards;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(255, 0, 0, 0.15);
+    text-align: left;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+    .login-box {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .pantip-logo {
+        width: 180px;
+    }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === ACCESSIBILITY === */
 .sr-only {
     position: absolute !important;
     height: 1px;
