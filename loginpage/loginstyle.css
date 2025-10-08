@@ -155,3 +155,57 @@ input[type="password"]:focus {
     margin-top: 10px;
     transition: 0.2s;
 }
+
+/* Password field with inline toggle */
+.password-field {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+}
+
+.password-field input[type="password"],
+.password-field input[type="text"] {
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    /* leave space for the toggle at right */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.2s;
+    box-sizing: border-box;
+}
+
+.toggle-pw {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #666;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-pw:focus {
+    outline: 2px solid #ffb84d;
+    outline-offset: 2px;
+}
+
+.toggle-pw:hover {
+    color: #000;
+}
+
+/* visually hidden helper for screen readers */
+.sr-only {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
