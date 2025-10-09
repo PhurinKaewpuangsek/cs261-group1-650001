@@ -44,11 +44,12 @@
         </div>
 
         <div class="review-area">
-          <label for="review-text">Write review (must be short sentence)</label>
-          <textarea id="review-text" rows="4" placeholder="Write your review..."></textarea>
+          <label for="reviewText">Write review (must be short sentence)</label>
+          <textarea id="reviewText" rows="4" placeholder="Write your review..."></textarea>
 
           <div class="text-limit-feedback">
-            your review is: <span id="feedback" class="feedback-text too-long">too long</span>
+            your review is:
+            <span id ="charCount" class="feedback-text">0/1000</span>
           </div>
         </div>
       </div>
@@ -57,7 +58,7 @@
       <div class="form-right">
         <div class="avatar-container">
             <p>Choose your avatar</p>
-          <img id="avatar-preview" src="avatar/avatar1.png"  class="avatar-circle">
+          <img id="avatarPreview" src="avatar/avatar1.png"  class="avatar-circle">
           <div class="avatar-options">
             <img src="avatar/avatar1.jpg" class="avatar-option" alt="anon1">
             <img src="avatar/avatar2.jpg" class="avatar-option" alt="anon2">
@@ -71,7 +72,7 @@
     <!-- 🔸 Buttons -->
     <div class="buttons">
       <button class="btn btn-cancel">Cancel</button>
-      <button class="btn btn-send">Send by</button>
+      <button class="btn btn-send">Submit</button>
     </div>
 
   </div>

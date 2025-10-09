@@ -208,3 +208,13 @@ textarea {
 .btn:hover {
   opacity: 0.9;
 }
+
+.too-long {
+  color: red;
+  font-weight: bold;
+}
+
+.ok {
+  color: green;
+  font-weight: bold;
+}

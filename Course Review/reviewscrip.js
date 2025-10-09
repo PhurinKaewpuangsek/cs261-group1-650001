@@ -70,3 +70,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+//--- length of character ---
+document.addEventListener('DOMContentLoaded', () => {
+  const ta = document.getElementById('reviewText') || document.getElementById('review-text');
+  const counter = document.getElementById('charCount');
+  const submitBtn = document.getElementById('submitBtn');
+  const MAX = 1000;
+
+  function updateCount() {
+    const len = ta.value.length;
+    if (counter) {
+      counter.textContent = `${len}/${MAX}`;
+      counter.classList.toggle('too-long', len > MAX);
+      counter.classList.toggle('ok', len <= MAX);
+    }
+    if (submitBtn) submitBtn.disabled = (len === 0 || len > MAX);
+  }
+
+  if (ta) {
+    ta.addEventListener('input', updateCount);
+    updateCount();
+  } else {
+    console.warn('review textarea not found (reviewText/review-text)');
+  }
+
+  const preview = document.getElementById('avatarPreview');
+  const options = document.querySelectorAll('.avatar-option');
+
+  if (preview && options.length) {
+    options.forEach(img => {
+      img.addEventListener('click', () => {
+        preview.src = img.dataset.src || img.src;
+      });
+    });
+  } else {
+    console.warn('avatarPreview or .avatar-option not found');
+  }
+});
