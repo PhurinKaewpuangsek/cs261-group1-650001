@@ -1,0 +1,131 @@
+/* =========================
+   Global / ฐานการตั้งค่าทั่วไป
+   ========================= */
+* { box-sizing: border-box; }                  /* ให้ความกว้าง/สูง คิดรวม padding/border */
+html, body { height: 100%; }
+body {
+  margin: 0;
+  /* ฟอนต์กลางอ่านง่ายบนทุกระบบ */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+  color: #222;
+}
+
+/* โครงหน้าหลัก: วาง sidebar + main เคียงกัน */
+.page {
+  display: flex;
+  min-height: 100vh;                           /* สูงเต็มจอเสมอ */
+}
+
+/* =========================
+   Sidebar (เมนูซ้าย)
+   ========================= */
+.sidebar {
+  width: 260px;                                /* ความกว้างแถบซ้าย */
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;              /* ส่วนบน/ล่างแยกกัน */
+  color: #fff;
+}
+
+/* ธีมสีของ sidebar */
+.sidebar--orange { background: #f59e0b; }      /* โหมดล็อกอิน */
+.sidebar--black  { background: #0c0c0c; }      /* โหมด guest/read */
+
+.logo {
+  font-weight: 800; font-size: 26px; line-height: 1.1;
+}
+.logo span { color: #ffd54a; }                 /* คำว่า pantip สีเหลือง */
+.logo__sub { font-size: 12px; color: #bfbfbf; margin-top: 4px; }
+
+.sidebar__section {                             /* กล่องรวมแต่ละส่วนใน sidebar */
+  display: grid; gap: 10px; align-content: start;
+}
+
+.nav { margin: 18px 0; display: grid; gap: 8px; }
+.nav__link {
+  display: block;
+  color: #fff; text-decoration: none;
+  padding: 10px 12px; border-radius: 8px;
+}
+/* hover แล้วกลับพื้นขาว ตัวหนังสือดำ */
+.nav__link:hover:not(.nav__link--disabled) { background: #fff; color: #111; }
+/* ลิงก์ปิดใช้งานใน read mode */
+.nav__link--disabled { opacity: .55; pointer-events: none; }
+
+.avatar {                                       /* กรอบรูปสายลับ */
+  width: 150px; height: 150px;
+  background: #fff; border-radius: 20px;
+  display: grid; place-items: center;
+  margin: 0 auto 12px;
+}
+.avatar__icon { font-size: 46px; color: #666; }
+.logout { color: #fff; text-align: center; text-decoration: none; opacity: .95; }
+
+/* =========================
+   Main (พื้นที่เนื้อหาขวา)
+   ========================= */
+.main {
+  flex: 1;                                      /* กินพื้นที่ที่เหลือทั้งหมด */
+  padding: 32px;
+  overflow: auto;                               /* เนื้อหาเกินให้เลื่อน */
+}
+
+/* ไล่เฉดพื้นหลังให้เหมือนแบบ */
+.main--grad-orange {
+  background: linear-gradient(180deg, #ffb800 0%, #f59e0b 55%, #000 100%);
+}
+.main--grad-black  {
+  background: linear-gradient(180deg, #000 0%, #1f1301 25%, #f59e0b 75%);
+}
+
+/* แถบเครื่องมือด้านบน: ปุ่มย้อนกลับ + ค้นหา + ฟิลเตอร์ดาว */
+.toolbar { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+
+.btn {                                          /* ปุ่มพื้นฐาน */
+  border: none; background: #fff;
+  padding: 10px 14px; border-radius: 12px; cursor: pointer;
+}
+.btn--circle { width: 40px; height: 40px; border-radius: 999px; font-size: 18px; font-weight: 700; }
+
+/* แถบค้นหาแบบ pill */
+.search {
+  flex: 1;
+  display: flex; align-items: center; gap: 8px;
+  background: #fff; border-radius: 24px; padding: 8px 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.18);
+}
+.search input { width: 100%; border: none; outline: none; background: transparent; font-size: 15px; }
+
+/* ชิปฟิลเตอร์ดาว 1–5 */
+.filters { display: flex; gap: 8px; }
+.chip {
+  background: #fff; border: none; padding: 8px 12px;
+  border-radius: 20px; box-shadow: 0 2px 5px rgba(0,0,0,.18);
+  cursor: pointer;
+}
+
+/* ตะแกรงการ์ดรีวิว */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* ยืดหยุ่นตามหน้าจอ */
+  gap: 22px;
+}
+
+/* ใบการ์ดรีวิว */
+.card {
+  background: #fff; border-radius: 16px;
+  min-height: 160px; padding: 16px;
+}
+.card__title  { font-weight: 700; margin: 0 0 6px; }
+.card__rating { color: #ffc107; font-weight: 800; margin-bottom: 8px; }
+.card__text   { margin: 0; color: #444; }
+
+/* สถานะว่างเมื่อไม่มีข้อมูล */
+.empty { color: #fff; opacity: .9; font-style: italic; text-align: center; }
+
+/* ปุ่มดาวที่กำลังถูกเลือก */
+.chip--active {
+  outline: 2px solid #ff2020;
+  box-shadow: 0 0 0 3px #ff0a0a22;
+}
