@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course Review</title>
   <link rel="stylesheet" href="reviewstyle.css">
 </head>
+
 <body>
-
   <div class="review-container">
-
-    <!-- 🔸 Header -->
     <div class="header">
       <h1>Review</h1>
       <div class="mode-toggle">
@@ -19,7 +18,6 @@
       </div>
     </div>
 
-    <!-- 🔸 Form -->
     <div class="review-form-body">
       <div class="form-left">
         <div class="form-group">
@@ -34,7 +32,7 @@
 
         <div class="form-group">
           <label>Rating</label>
-          <div class="rating">
+          <div class="rating" id="ratingBox">
             <div class="star-box" data-rating="5">&#9733;5</div>
             <div class="star-box" data-rating="4">&#9733;4</div>
             <div class="star-box" data-rating="3">&#9733;3</div>
@@ -49,34 +47,32 @@
 
           <div class="text-limit-feedback">
             your review is:
-            <span id ="charCount" class="feedback-text">0/1000</span>
+            <span id="charCount" class="feedback-text">0/1000</span>
           </div>
         </div>
       </div>
 
-      <!-- 🔸 Avatar Picker -->
       <div class="form-right">
         <div class="avatar-container">
-            <p>Choose your avatar</p>
-          <img id="avatarPreview" src="avatar/avatar1.png"  class="avatar-circle">
+          <p>Choose your avatar</p>
+          <img id="avatarPreview" src="avatar/avatar1.png" class="avatar-circle" alt="avatar preview">
           <div class="avatar-options">
             <img src="avatar/avatar1.jpg" class="avatar-option" alt="anon1">
             <img src="avatar/avatar2.jpg" class="avatar-option" alt="anon2">
             <img src="avatar/avatar3.jpg" class="avatar-option" alt="anon3">
-            <img src="avatar/avatar4.jpg" class="avatar-option" alt="cartoon character smiling with glasses and blue shirt, set against a simple light background, friendly and welcoming tone">
+            <img src="avatar/avatar4.jpg" class="avatar-option" alt="anon4">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 🔸 Buttons -->
     <div class="buttons">
-      <button class="btn btn-cancel">Cancel</button>
-      <button class="btn btn-send">Submit</button>
+      <button class="btn btn-cancel" id="btnCancel">Cancel</button>
+      <button class="btn btn-send" id="btnSubmit">Submit</button>
     </div>
-
   </div>
 
   <script src="reviewscrip.js"></script>
 </body>
+
 </html>

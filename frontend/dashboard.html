@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSTU Pantip — Dashboard</title>
+  <link rel="stylesheet" href="dashboard-style.css" />
+</head>
+<body class="page">
+  <!-- Sidebar (light orange/yellow) -->
+  <aside class="sidebar sidebar--orange">
+    <div class="sidebar__section">
+      <!-- ใช้โลโก้โทนเข้ากับหน้า login (สว่าง) -->
+      <a href="dashboard.html" class="logo logo--img" aria-label="CSTU Pantip">
+        <img src="dasboardSource/darkpanthip.png" alt="CSTU Pantip logo" class="brand-img">
+      </a>
+
+      <nav class="nav">
+        <a class="nav__link is-active" href="#"><span>🏠</span> overview</a>
+        <a class="nav__link" href="#" id="linkWrite"><span>📝</span> write review</a>
+      </nav>
+    </div>
+
+    <div class="sidebar__section">
+      <div class="avatar"><span class="avatar__icon">🕵️</span></div>
+      <a class="logout" href="#" id="btnLogout">Log-out</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="toolbar">
+      <div class="toolbar__left">
+        <button class="btn btn--circle" id="btnBack" title="Back" aria-label="Back">‹</button>
+        <h1 class="title">Dashboard</h1>
+        <span class="badge" id="resultMeta" aria-live="polite">0 reviews</span>
+      </div>
+
+      <div class="toolbar__right">
+        <div class="search" role="search">
+          <span aria-hidden="true">🔎</span>
+          <input id="searchInput" type="text" placeholder="Search course / professor / review…" autocomplete="off" />
+        </div>
+      </div>
+    </header>
+
+    <section class="filterbar">
+      <div class="filters" id="starFilters" role="group" aria-label="Filter by star">
+        <button class="chip" data-star="5">⭐ 5</button>
+        <button class="chip" data-star="4">⭐ 4</button>
+        <button class="chip" data-star="3">⭐ 3</button>
+        <button class="chip" data-star="2">⭐ 2</button>
+        <button class="chip" data-star="1">⭐ 1</button>
+        <button class="chip chip--ghost" id="clearFilters" title="Clear filters">Clear</button>
+      </div>
+    </section>
+
+    <section class="helperbar">
+      <div class="helperbar__left">
+        <span class="hint">Tip:</span> พิมพ์ค้นหา + เลือกดาว เพื่อกรองรีวิวหลายเงื่อนไขพร้อมกัน
+      </div>
+      <div class="helperbar__right">
+        <button class="btn btn--primary" id="writeCTA2">+ Write review</button>
+      </div>
+    </section>
+
+    <section id="reviewGrid" class="grid"></section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="dashboard-script.js"></script>
+  <script>
+    CSTU.initDashboard();
+    document.getElementById('writeCTA2')?.addEventListener('click', (e)=>{
+      e.preventDefault(); window.location.href='review.html';
+    });
+  </script>
+</body>
+</html>

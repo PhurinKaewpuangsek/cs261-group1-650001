@@ -124,7 +124,6 @@ textarea {
 .too-long { color: red; }
 .ok { color: green; }
 
-
 /* ✅ Avatar Picker */
 .form-right {
   width: 250px;
@@ -217,4 +216,19 @@ textarea {
 .ok {
   color: green;
   font-weight: bold;
+}
+
+/* ทำให้ดาวที่ถูกเลือกเห็นชัด ไม่ว่าจะใช้ .selected หรือ .is-active */
+.star-box.selected,
+.star-box.is-active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+/* กรอบไฮไลต์ avatar ที่ถูกเลือก */
+.avatar-option.is-active,
+.avatar-option.selected {
+  border-color: #ffcc00;
+  outline: 2px solid rgba(255, 204, 0, .35);
+  transform: scale(1.08);
 }

@@ -10,22 +10,18 @@
 
 <body>
     <div class="container">
-        <!-- Topbar -->
         <div class="topbar">
             <img src="loginsource/panthip.png" alt="Pantip Logo" class="pantip-logo" />
         </div>
 
-        <!-- Login Box -->
         <div class="login-box">
             <img src="loginsource/cstu.jpg" alt="CS TU Logo" class="logo" />
 
-            <form id="login-form">
-                <input id="studentId" type="text" placeholder="student-id" required />
-
-                <!-- Password field with toggle -->
+            <form id="login-form" autocomplete="off">
+                <input id="studentId" type="text" placeholder="student-id" required autocomplete="username" />
                 <div class="password-field">
                     <input id="passwordInput" type="password" placeholder="Password" required
-                        aria-describedby="togglePwDesc" />
+                        autocomplete="current-password" aria-describedby="togglePwDesc" />
                     <button type="button" id="togglePassword" class="toggle-pw" aria-pressed="false"
                         aria-label="Show password" title="Show password">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
@@ -41,15 +37,13 @@
                 <p id="loginError" class="error-msg"></p>
 
                 <label class="remember">
-                    <input type="checkbox" /> Remember me
-                    <div class="forgot-password-link">
-                    <a href="forgotPW.html" class="forgot-link">Forgot Password?</a>
-                </div>
+                    <!-- เพิ่ม id เพื่อใช้กับสคริปต์ -->
+                    <input type="checkbox" id="rememberMe" /> Remember me
                 </label>
                 <button type="submit" class="login-btn">Log in</button>
             </form>
 
-            <a href="#" class="read-mode">Continue in read mode</a>
+            <a href="#" id="readModeLink" class="read-mode">Continue in read mode</a>
         </div>
     </div>
 
