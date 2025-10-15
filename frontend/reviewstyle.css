@@ -1,21 +1,25 @@
 /* ✅ Layout */
 body {
   font-family: Arial, sans-serif;
-  background-color: #F6981D;
+  background: linear-gradient(to bottom, #ffcc80 , #ffe0b2);
   display: flex;
   justify-content: center;
-  padding: 50px 0;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
+/* กล่องรีวิว */
 .review-container {
   background-color: #fff;
-  width: 900px;
+  width: 90%;        /* กิน 90% ของหน้าจอ */
+  max-width: 1200px; /* แต่ไม่เกิน 1200px */
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   overflow: hidden;
 }
 
-/* ✅ Header */
+/* แถบรีวิวด้านบนของกล่อง */
 .header {
   background: linear-gradient(to right, #ff9900, #ffcc00);
   padding: 20px 30px;
@@ -23,12 +27,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .header h1 {
   font-size: 28px;
   margin: 0;
 }
+
 
 .mode-toggle {
   display: flex;
