@@ -1,0 +1,241 @@
+/* ✅ Layout */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ffcc80 , #ffe0b2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* กล่องรีวิว */
+.review-container {
+  background-color: #fff;
+  width: 90%;        /* กิน 90% ของหน้าจอ */
+  max-width: 1200px; /* แต่ไม่เกิน 1200px */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+/* แถบรีวิวด้านบนของกล่อง */
+.header {
+  background: linear-gradient(to right, #ff9900, #ffcc00);
+  padding: 20px 30px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+
+.mode-toggle {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-btn {
+  background-color: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.toggle-btn.active {
+  background-color: #fff;
+  color: #ff9900;
+}
+
+/* ✅ Body */
+.review-form-body {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 40px;
+}
+
+.form-left {
+  flex: 1;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ✅ Rating */
+.rating {
+  display: flex;
+  gap: 8px;
+}
+
+.star-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.star-box.selected {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+/* ✅ Textarea */
+textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  resize: none;
+}
+
+.text-limit-feedback {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.feedback-text {
+  font-weight: bold;
+}
+
+.too-long { color: red; }
+.ok { color: green; }
+
+/* ✅ Avatar Picker */
+.form-right {
+  width: 250px;
+  text-align: center;
+  padding: 5px;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.avatar-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  object-fit: cover;
+  transition: transform 0.2s;
+  
+}
+
+.avatar-circle:hover {
+  transform: scale(1.05);
+}
+
+.avatar-options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center; 
+}
+
+.avatar-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.avatar-option:hover {
+  transform: scale(1.1);
+  border-color: #ffcc00;
+}
+
+/* ✅ Buttons */
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 20px 40px;
+  border-top: 1px solid #eee;
+}
+
+.btn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-cancel {
+  background-color: #fff;
+  color: #ff9900;
+  border: 2px solid #ff9900;
+}
+
+.btn-send {
+  background-color: #ffcc00;
+  color: #333;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.too-long {
+  color: red;
+  font-weight: bold;
+}
+
+.ok {
+  color: green;
+  font-weight: bold;
+}
+
+/* ทำให้ดาวที่ถูกเลือกเห็นชัด ไม่ว่าจะใช้ .selected หรือ .is-active */
+.star-box.selected,
+.star-box.is-active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+/* กรอบไฮไลต์ avatar ที่ถูกเลือก */
+.avatar-option.is-active,
+.avatar-option.selected {
+  border-color: #ffcc00;
+  outline: 2px solid rgba(255, 204, 0, .35);
+  transform: scale(1.08);
+}

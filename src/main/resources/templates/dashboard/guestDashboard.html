@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSTU Pantip — Dashboard (guest)</title>
+  <link rel="stylesheet" href="/css/dashboard-style.css" />
+  <style>
+    /* ทำปุ่มเขียนรีวิวในโหมด Guest ให้เป็นปุ่มปิด/กดไม่ได้ */
+    .nav__link--disabled{
+      opacity:.6;
+      cursor:not-allowed;
+      background:transparent !important;
+      outline: 1px dashed rgba(255,255,255,.18);
+    }
+    .nav__link--disabled:hover{ filter:none }
+    /* ให้ปุ่มในเมนูวางตัวเหมือนลิงก์ */
+    button.nav__link{ width:100%; text-align:left }
+    /* ปุ่มแจ้งเตือน/ลิงก์ล็อกอินด้านบนขวา */
+    .helperbar__right .btn{
+      background:linear-gradient(135deg, var(--accent), #7de3ff);
+      color:#001018;
+    }
+    /* แถบแจ้งเตือนเล็ก ๆ เมื่อผู้ใช้กดปุ่มที่ปิดอยู่ */
+    .toast--warn{
+      border-color: rgba(255,200,0,.4);
+      box-shadow: 0 10px 30px rgba(255,200,0,.15);
+    }
+  </style>
+</head>
+<body class="page theme-dark">
+  <!-- Sidebar (dark) -->
+  <aside class="sidebar sidebar--black">
+    <div class="sidebar__section">
+      <!-- โลโก้พาไปหน้า login (เหมาะกับ guest) -->
+      <a href="login.html" class="logo logo--img" aria-label="CSTU Pantip">
+        <img src="/src/Source/panthip.png" alt="CSTU Pantip logo" class="brand-img">
+      </a>
+
+      <nav class="nav" aria-label="Sidebar">
+        <a class="nav__link is-active" href="#"><span>🏠</span> overview</a>
+
+        <!-- ปุ่มแทน write review (ปิดการใช้งาน) -->
+        <button
+          type="button"
+          class="nav__link nav__link--disabled"
+          id="guestWriteDisabled"
+          aria-disabled="true"
+          tabindex="-1"
+          title="Please log in to write review">
+          <span>🔒</span> Please log in to write review
+        </button>
+      </nav>
+    </div>
+
+    <div class="sidebar__section">
+      <div class="avatar"><span class="avatar__icon">👤</span></div>
+      <a class="logout" href="login.html" id="loginBtnSidebar">Log-in</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="toolbar">
+      <div class="toolbar__left">
+        <button class="btn btn--circle" id="btnBack" title="Back" aria-label="Back">‹</button>
+        <h1 class="title">Dashboard (read mode) </h1>
+        <span class="badge" id="resultMeta" aria-live="polite">0 reviews</span>
+      </div>
+
+      <div class="toolbar__right">
+        <div class="search" role="search">
+          <span aria-hidden="true">🔎</span>
+          <input id="searchInput" type="text" placeholder="Search course / professor / review…" autocomplete="off" />
+        </div>
+      </div>
+    </header>
+
+    <section class="filterbar">
+      <div class="filters" id="starFilters" role="group" aria-label="Filter by star">
+        <button class="chip" data-star="5">⭐ 5</button>
+        <button class="chip" data-star="4">⭐ 4</button>
+        <button class="chip" data-star="3">⭐ 3</button>
+        <button class="chip" data-star="2">⭐ 2</button>
+        <button class="chip" data-star="1">⭐ 1</button>
+        <button class="chip chip--ghost" id="clearFilters" title="Clear filters">Clear</button>
+      </div>
+    </section>
+
+    <section class="helperbar">
+      <div class="helperbar__left">
+        <span class="hint">Tip:</span> ใช้ช่องค้นหา + เลือกดาว เพื่อดูรีวิวที่ตรงใจ (โหมดอ่านอย่างเดียว)
+      </div>
+      <div class="helperbar__right">
+        <!-- ปุ่มไปล็อกอินแทนที่จะให้เขียนรีวิว -->
+        <a class="btn" href="login.html" id="loginCtaTop">Log in</a>
+      </div>
+    </section>
+
+    <section id="reviewGrid" class="grid"></section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="/javascript/dashboard-script.js"></script>
+  <script>
+    // ใช้ logic แสดงรีวิว/ค้นหาเหมือนเดิม แต่บังคับเป็นโหมด guest
+    try { sessionStorage.setItem('isAdmin', 'false'); } catch (e) {}
+
+    CSTU.initDashboard();
+
+    // ปุ่ม Back: ถ้าไม่มี history ให้กลับไปหน้า login
+    document.getElementById('btnBack')?.addEventListener('click', ()=>{
+      history.length > 1 ? history.back() : (window.location.href='login.html');
+    });
+
+    // คลิกปุ่มที่ปิดไว้ให้ขึ้นแจ้งเตือนแทน
+    const disabledWrite = document.getElementById('guestWriteDisabled');
+    const toast = document.getElementById('toast');
+    function warnLoginFirst(){
+      if (!toast) return;
+      toast.textContent = 'Please log in to write a review';
+      toast.classList.add('is-show','toast--warn');
+      setTimeout(()=> toast.classList.remove('is-show','toast--warn'), 1800);
+    }
+    disabledWrite?.addEventListener('click', warnLoginFirst);
+  </script>
+</body>
+</html>

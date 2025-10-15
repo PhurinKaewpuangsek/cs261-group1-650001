@@ -1,0 +1,242 @@
+/* === RESET & GLOBAL === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom right, #f6981d, #fac30f);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === TOPBAR === */
+.topbar {
+    width: 100%;
+    padding: 20px 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pantip-logo {
+    width: 240px;
+    height: auto;
+}
+
+/* === MAIN CONTAINER === */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* === LOGIN BOX === */
+.login-box {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    min-height: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+/* === LOGO === */
+.logo {
+    width: 160px;
+    height: auto;
+    margin-bottom: 25px;
+    object-fit: contain;
+}
+
+/* === FORM === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 280px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 2px 6px rgba(255, 152, 0, 0.3);
+}
+
+::placeholder {
+    color: #aaa;
+}
+
+/* === PASSWORD FIELD === */
+.password-field {
+    position: relative;
+    width: 100%;
+}
+
+.password-field input {
+    padding-right: 40px;
+}
+
+.toggle-pw {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #666;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.toggle-pw:hover {
+    color: #000;
+}
+
+.toggle-pw:focus {
+    outline: 2px solid #ffb84d;
+    outline-offset: 2px;
+}
+
+/* === BUTTONS === */
+.login-btn {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+.login-btn.loading {
+    background: #555;
+    cursor: wait;
+}
+
+/* === REMEMBER + LINK === */
+.remember {
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: flex-start;
+}
+
+.read-mode {
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #0f93ff;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.read-mode:hover {
+    opacity: 0.8;
+}
+
+/* === INLINE ERROR (Enhanced Visuals) === */
+.error-msg {
+    display: none;
+    background: rgba(255, 0, 0, 0.08);
+    color: #d32f2f;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-top: -5px;
+    animation: fadeIn 0.3s ease forwards;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(255, 0, 0, 0.15);
+    text-align: left;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+    .login-box {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .pantip-logo {
+        width: 180px;
+    }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === ACCESSIBILITY === */
+.sr-only {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}

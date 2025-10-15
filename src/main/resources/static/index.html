@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSTU Login</title>
+    <link rel="stylesheet" href="css/loginstyle.css" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Topbar -->
+        <div class="topbar">
+            <img src="src/source/panthip.png" alt="Pantip Logo" class="pantip-logo" />
+        </div>
+
+        <!-- Login Box -->
+        <div class="login-box">
+            <img src="src/source/cstu.jpg" alt="CS TU Logo" class="logo" />
+
+            <form id="login-form">
+                <input id="studentId" type="text" placeholder="student-id" required />
+
+                <!-- Password field with toggle -->
+                <div class="password-field">
+                    <input id="passwordInput" type="password" placeholder="Password" required
+                        aria-describedby="togglePwDesc" />
+                    <button type="button" id="togglePassword" class="toggle-pw" aria-pressed="false"
+                        aria-label="Show password" title="Show password">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                            focusable="false">
+                            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </button>
+                    <span id="togglePwDesc" class="sr-only">Toggle password visibility</span>
+                </div>
+
+                <p id="loginError" class="error-msg"></p>
+
+                <label class="remember">
+                    <input type="checkbox" /> Remember me
+                </label>
+                <button type="submit" class="login-btn">Log in</button>
+            </form>
+
+            <a href="/dashboard/guest" class="read-mode">Continue in read mode</a>
+        </div>
+    </div>
+
+    <script src="javascript/loginscript.js"></script>
+</body>
+
+</html>
