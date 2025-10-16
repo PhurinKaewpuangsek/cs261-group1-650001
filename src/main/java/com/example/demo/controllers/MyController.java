@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,7 +33,7 @@ public class MyController {
         return repo.save(review);
     }
 	@GetMapping
-	public String showReview() {
-		return "Hello";
+	public List<Card> showReview() {
+		return repo.findAll();
 	}
 }
