@@ -17,9 +17,21 @@ public class Card {
 	private int rating;
 	@Column(columnDefinition = "description")
 	private String description;
+	
+	public Card( String name, String prof, int rating, String description) {
+		super();
+		this.name = name;
+		this.prof = prof;
+		this.rating = rating;
+		this.description = description;
+	}
+	public Card() {}
+	
+	
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}

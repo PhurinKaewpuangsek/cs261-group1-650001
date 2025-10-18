@@ -33,8 +33,8 @@
   <aside class="sidebar sidebar--black">
     <div class="sidebar__section">
       <!-- โลโก้พาไปหน้า login (เหมาะกับ guest) -->
-      <a href="login.html" class="logo logo--img" aria-label="CSTU Pantip">
-        <img src="/src/Source/panthip.png" alt="CSTU Pantip logo" class="brand-img">
+      <a href="/" class="logo logo--img" aria-label="CSTU Pantip">
+        <img src="/src/dasboardSource/panthip.png" alt="CSTU Pantip logo" class="brand-img">
       </a>
 
       <nav class="nav" aria-label="Sidebar">
@@ -55,7 +55,7 @@
 
     <div class="sidebar__section">
       <div class="avatar"><span class="avatar__icon">👤</span></div>
-      <a class="logout" href="login.html" id="loginBtnSidebar">Log-in</a>
+      <a class="logout" href="/" id="loginBtnSidebar">Log-in</a>
     </div>
   </aside>
 
@@ -93,7 +93,7 @@
       </div>
       <div class="helperbar__right">
         <!-- ปุ่มไปล็อกอินแทนที่จะให้เขียนรีวิว -->
-        <a class="btn" href="login.html" id="loginCtaTop">Log in</a>
+        <a class="btn" href="/" id="loginCtaTop">Log in</a>
       </div>
     </section>
 
@@ -102,7 +102,7 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="/javascript/dashboard-script.js"></script>
+  <script src="javascript/dashboard-script.js"></script>
   <script>
     // ใช้ logic แสดงรีวิว/ค้นหาเหมือนเดิม แต่บังคับเป็นโหมด guest
     try { sessionStorage.setItem('isAdmin', 'false'); } catch (e) {}
@@ -111,7 +111,7 @@
 
     // ปุ่ม Back: ถ้าไม่มี history ให้กลับไปหน้า login
     document.getElementById('btnBack')?.addEventListener('click', ()=>{
-      history.length > 1 ? history.back() : (window.location.href='login.html');
+      history.length > 1 ? history.back() : (window.location.href='/');
     });
 
     // คลิกปุ่มที่ปิดไว้ให้ขึ้นแจ้งเตือนแทน

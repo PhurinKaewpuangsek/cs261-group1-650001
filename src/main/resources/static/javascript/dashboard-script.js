@@ -10,51 +10,44 @@
      author?: { name?: string, avatar?: string }
    }
 */
-
-
-
-
 ;(() => {
   const LS_KEY = 'courseReviews'
 
   const qs  = (sel, el=document) => el.querySelector(sel)
   const qsa = (sel, el=document) => [...el.querySelectorAll(sel)]
 
-  
-  
   // ---------- ดึง API มาจากเว็ป ----------
 
-    const readReviewsFromAPI = async () => {
-      try {
-  	  const API_URL = 'http://localhost:8081/api/review';
-        const response = await fetch(API_URL);
+      const readReviewsFromAPI = async () => {
+        try {
+    	  const API_URL = 'http://localhost:8081/api/review';
+          const response = await fetch(API_URL);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        } else {
-  		/*alert("Linking complete")*/
-  	  }
-  	  
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          } else {
+    		/*alert("Linking complete")*/
+    	  }
+    	  
 
-        const arr = await response.json();
-  	  /*console.log(arr);*/
-  	  	
-        if (!Array.isArray(arr)) {
-          console.error('API did not return an array. Using empty array.');
+          const arr = await response.json();
+    	  /*console.log(arr);*/
+    	  	
+          if (!Array.isArray(arr)) {
+            console.error('API did not return an array. Using empty array.');
+            return [];
+          }
+
+          
+          const { rows } = normalizeRows(arr);
+    	  /*console.log("this is data" + rows);*/
+          return rows;
+
+        } catch (e) {
+          console.error('Failed to fetch reviews from API:', e);
           return [];
         }
-
-        
-        const { rows } = normalizeRows(arr);
-  	  /*console.log("this is data" + rows);*/
-        return rows;
-
-      } catch (e) {
-        console.error('Failed to fetch reviews from API:', e);
-        return [];
       }
-    }
-  
   
   const formatDate = (ts) => {
     const d = new Date(ts || Date.now())
@@ -71,6 +64,28 @@
     const { rows, changed } = normalizeRows(arr)
     if (changed) writeLS(rows)
     return rows
+  }
+  
+  
+  async function deleteById(uid){
+  	
+	console.log(uid)
+	
+	try{
+		const API_URL = 'http://localhost:8081/api/review/delete';
+		const response = await fetch(API_URL, {
+		  method: "DELETE",
+		  headers:{'Content-Type': 'application/json'},
+		  body: JSON.stringify({ id: uid })
+		});
+		if (!response.ok){
+			throw new Error(`HTTP error! status: ${response.status}`); 
+		} else{
+			window.location.reload();
+		}
+	} catch (e){
+		alert(e)
+	}
   }
 
   const writeLS = (rows) => {
@@ -178,29 +193,29 @@
     ? escapeHTML(r.description)
     : '<span style="color:#9c8b70">— no review text —</span>'
 
-  wrap.innerHTML = `
-    <header class="card__head">
-      <div>
-        <div class="card__course">${name}</div>
-        <div class="card__meta">${profText}</div>
-      </div>
-      <div class="card__topRight">
-        <div class="stars" aria-label="${r.rating} stars">${stars}</div>
-        ${avatarHTML}
-      </div>
-    </header>
+	wrap.innerHTML = `
+	    <header class="card__head">
+	      <div>
+	        <div class="card__course">${name}</div>
+	        <div class="card__meta">${profText}</div>
+	      </div>
+	      <div class="card__topRight">
+	        <div class="stars" aria-label="${r.rating} stars">${stars}</div>
+	        ${avatarHTML}
+	      </div>
+	    </header>
 
-    <div class="card__body">${body}</div>
+	    <div class="card__body">${body}</div>
 
-    <footer class="card__footer">
-      <span class="kbd">${metaRight}</span>
-      <div class="act">
-        ${state.isAdmin
-          ? `<button class="btn btn--danger btn--sm" data-act="delete" data-id="${r.id}">Delete</button>`
-          : ``}
-      </div>
-    </footer>
-  `
+	    <footer class="card__footer">
+	      <span class="kbd">${metaRight}</span>
+	      <div class="act">
+	        ${state.isAdmin
+	          ? `<button class="btn btn--danger btn--sm" data-act="delete" data-id="${r.id}">Delete</button>`
+	          : ``}
+	      </div>
+	    </footer>
+	  `
   return wrap
 }
 
@@ -212,7 +227,6 @@
 
     const rows = await readReviewsFromAPI();
     state.rows = rows
-	/*console.log(rows)*/
 
     const filtered = rows.filter(matchFilter).sort((a,b)=> b.createdAt - a.createdAt)
     updateResultBadge(filtered.length)
@@ -224,7 +238,7 @@
       grid.appendChild(empty)
       return
     }
-	console.log(filtered)
+
     filtered.forEach(r => grid.appendChild(renderCard(r)))
   }
 
@@ -271,11 +285,11 @@
         const bt = e.target.closest('[data-act="delete"]')
         if(!bt) return
         const id = bt.dataset.id
-        if(!id) return
-        const next = readLS().filter(r=> String(r.id) !== String(id))
-        writeLS(next)
-        showToast('Deleted review')
-        renderGrid()
+        if(!id) 
+			return
+		deleteById(id)
+     
+		
       })
     }
 
@@ -285,7 +299,7 @@
       if(!x) return
       x.addEventListener('click', (ev)=>{
         ev.preventDefault()
-        window.location.href = '/dashboard/review'
+        window.location.href = '/review'
       })
     })
 
@@ -304,7 +318,7 @@
         e.preventDefault()
         try { sessionStorage.removeItem('isAdmin') } catch(e){}
         showToast('Logged out')
-        setTimeout(()=> window.location.href='login.html', 400)
+        setTimeout(()=> window.location.href='/', 400)
       })
     }
   }
@@ -330,12 +344,15 @@
 
   // ---------- PUBLIC API ----------
   window.CSTU = window.CSTU || {}
-  window.CSTU.initDashboard = async function initDashboard(){
+  window.CSTU.initDashboard = function initDashboard(){
     try {
       state.isAdmin = (sessionStorage.getItem('isAdmin') === 'true')
     } catch(e){ state.isAdmin = false }
-    
-	bindHandlers()
-	await renderGrid()
+    seedIfEmpty()
+    bindHandlers()
+    renderGrid()
   }
+  
+  
+  
 })()

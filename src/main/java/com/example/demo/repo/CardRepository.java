@@ -1,4 +1,4 @@
-package com.example.demo.services;
+package com.example.demo.repo;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,4 +9,5 @@ public interface CardRepository extends JpaRepository<Card,Integer> {
 //	List<Card> findByName(String name);
 
 //	List<Card> findByEmailContaining(String keyword);
+	
 }

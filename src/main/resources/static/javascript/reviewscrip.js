@@ -6,7 +6,6 @@
   const LS_KEY = 'courseReviews'
   const LIMIT = 220; // ✅ จำกัดความยาวรีวิวเพื่อไม่ให้ทะลุการ์ด
 
- 
   // ---------- helpers ----------
   const qs  = (sel, el=document) => el.querySelector(sel)
   const qsa = (sel, el=document) => Array.from(el.querySelectorAll(sel))
@@ -160,48 +159,35 @@
     // กัน edge case: trim ให้ชัวร์ก่อนเซฟ
     comment = comment.slice(0, LIMIT)
 
-    /*const row = {
-      id: rid(),
-      course: course || 'Untitled',
-      professor: professor || '',
-      rating: Math.max(1, Math.min(5, Number(getRating())||3)),
-      comment: comment || '',
-      createdAt: Date.now(),
-      author: { name: getAuthorName(), avatar: getAvatar() }
-    }*/
-
-	const reviewCard = {
-	      name: course,
-	      prof: professor,
-	      description: comment,
-	      rating: Math.max(1, Math.min(5, Number(getRating())||3))
-	 };
-	 
-	 try{
-		const API_URL = 'http://localhost:8081/api/review';
-		const response = await fetch(API_URL,{
-			method: 'POST',
-			headers:{
-			'Content-Type': 'application/json'
-			},
-			body:JSON.stringify(reviewCard)
-		});
-		if(response.ok){
-			try{ window.location.href = '/dashboard' }catch{}
-			
-		} else{
-			alert('ส่งข้อมูลไม่ได้จ้าาา ไม่โอเค เพราะ :' + response.status)
-		}
-	 } catch(error){
-		console.error('ส่งข้อมูลไม่ได้จ้าาา error เพราะ :' + error)
-	 }
-	 
-	
-    /*const list = readLS()
-    list.push(row)
-    writeLS(list)*/
-
     
+	
+	const reviewCard = {
+		      name: course,
+		      prof: professor,
+		      description: comment,
+		      rating: Math.max(1, Math.min(5, Number(getRating())||3))
+		 };
+		 
+		 try{
+			const API_URL = 'http://localhost:8081/api/review/post';
+			const response = await fetch(API_URL,{
+				method: 'POST',
+				headers:{
+				'Content-Type': 'application/json'
+				},
+				body:JSON.stringify(reviewCard)
+			});
+			if(response.ok){
+				alert('ส่งข้อมูลสำเร็จ!')
+				try { window.location.href = '/dashboard' } catch {}
+				
+			} else{
+				alert('ส่งข้อมูลไม่ได้จ้าาา ไม่โอเค เพราะ :' + response.status)
+			}
+		 } catch(error){
+			console.error('ส่งข้อมูลไม่ได้จ้าาา error เพราะ :' + error)
+		 }
+
   }
 
   // ---------- INIT ----------

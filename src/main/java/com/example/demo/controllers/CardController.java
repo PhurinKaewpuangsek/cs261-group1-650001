@@ -3,7 +3,7 @@ import java.util.List;
 
 import com.example.demo.models.Card;
 import com.example.demo.models.CardDTO;
-import com.example.demo.services.CardRepository;
+import com.example.demo.repo.CardRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/dashboard")
 public class CardController {
-	@Autowired
-	private CardRepository repo;
+//	@Autowired
+//	private CardRepository repo;
 	
 	@GetMapping({"","/"})
 	public String showCard (Model model) {
@@ -36,7 +36,7 @@ public class CardController {
 	
 	@GetMapping({"/review"})
 	public String review (Model model) {
-		CardDTO carddto = new CardDTO();
+//		CardDTO carddto = new CardDTO();
 		return "review/review.html";
 	}
 }

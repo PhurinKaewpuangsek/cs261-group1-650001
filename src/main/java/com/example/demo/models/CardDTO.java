@@ -9,7 +9,6 @@ public class CardDTO {
 	@NotEmpty(message = "กรุณาใส่ชื่ออาจารย์")
 	private String prof;
 	
-	
 	@Min(1)
 	@Max(5)
 	@NotEmpty(message = "กรุณาให้คะแนน")
