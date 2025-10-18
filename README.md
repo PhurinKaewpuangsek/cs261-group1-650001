@@ -1,37 +1,24 @@
 # cs261-group1-650001
 
-SpringBoot :
+# Frontend Structure ของ SpringBoot Project
 
-	ตอนนี้ไฟล์ทุกอย่างอยู่ใน spring boot หมดแล้วนะทุกคน โดยจะมี folder ชื่อ frontend ที่เก็บทุกอย่างที่เป็น frontend ซึ่งหากอยากเปลี่ยนข้อมูลให้เปลี่ยนในสปริงดีกว่า
-ข้อมูลทั้งหมดคือ
-======================================================================================================================================================================================
-										ที่อยู่ของข้อมูล frontend ทั้งหมด
+ตอนนี้ไฟล์ทั้งหมดอยู่ใน Spring Boot แล้ว โดย folder `frontend` จะเก็บทุกอย่างที่เกี่ยวกับ frontend  
+หากต้องการแก้ไขข้อมูล ควรแก้ไขจาก Spring Boot โดยตรง
 
-	1.static ข้อมูลที่ไม่ค่อยเปลี่ยนอะไรมาก พวก css javascript
+---
 
-src/main/resources/static/
-├── css/                # เก็บไฟล์สไตล์ชีต
-│   ├── dashboard-style.css
-│   ├── loginstyle.css
-│   └── reviewstyle.css
-├── index.html          # หน้าแรกของเว็บไซต์
-├── javascript/         # เก็บไฟล์สคริปต์ JS
-│   ├── dashboard-script.js
-│   ├── loginscript.js
-│   └── reviewscrip.js
-└── src/                # เก็บไฟล์รูปภาพทั้งหมด
-    ├── Avatar/
-    ├── dasboardSource/
-    └── source/
+## 1. Static
+ไฟล์ที่ไม่ค่อยเปลี่ยนบ่อย เช่น CSS, JavaScript, รูปภาพ  
+**Path:** `src/main/resources/static/`
 
 
+---
+
+## 2. Templates
+เก็บไฟล์ HTML สำหรับ rendering หน้าเว็บ  
+**Path:** `src/main/resources/templates/`
 
 
-	2.Templates ใส่พวก Html ไรงี้
+---
 
-src/main/resources/templates/
-├── dashboard
-│   ├── dashboard.html
-│   └── guestDashboard.html
-└── review
-    └── review.html
+> 💡 Tips: ใช้ Markdown tree structure แบบนี้ช่วยให้คนอื่นเห็นภาพ folder และไฟล์ทั้งหมดชัดเจนเมื่อเปิด README ใน GitHub
