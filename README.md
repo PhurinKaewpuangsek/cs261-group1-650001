@@ -10,27 +10,19 @@ SpringBoot :
 	1.static ข้อมูลที่ไม่ค่อยเปลี่ยนอะไรมาก พวก css javascript
 
 src/main/resources/static/
-├── css                           <-------- ที่เก็บ css
-│   ├── dashboard-style.css
-│   ├── loginstyle.css
-│   └── reviewstyle.css
-├── index.html					   <-------- ที่เก็บ index หน้าหลัก
-├── javascript					   <-------- ที่เก็บ javascript
-│   ├── dashboard-script.js
-│   ├── loginscript.js
-│   └── reviewscrip.js
-└── src                           <-------- ที่เก็บไฟล์รูปภาพ
-    ├── Avatar
-    │   ├── avatar1.jpg
-    │   ├── avatar2.jpg
-    │   ├── avatar3.jpg
-    │   └── avatar4.jpg
-    ├── dasboardSource
-    │   ├── darkpanthip.png
-    │   └── panthip.png
-    └── source
-        ├── cstu.jpg
-        └── panthip.png
+├── css/                # เก็บไฟล์สไตล์ชีต
+│   ├── dashboard-style.css
+│   ├── loginstyle.css
+│   └── reviewstyle.css
+├── index.html          # หน้าแรกของเว็บไซต์
+├── javascript/         # เก็บไฟล์สคริปต์ JS
+│   ├── dashboard-script.js
+│   ├── loginscript.js
+│   └── reviewscrip.js
+└── src/                # เก็บไฟล์รูปภาพทั้งหมด
+    ├── Avatar/
+    ├── dasboardSource/
+    └── source/
 
 
 
