@@ -4,14 +4,14 @@ import jakarta.validation.constraints.Min;
 
 public class DelCardDTO {
     @Min(1)
-    private int id; // เปลี่ยนชื่อจาก IDCard เป็น id
+    private int CardID; // เปลี่ยนชื่อจาก IDCard เป็น id
 
-    public int getId() {
-        return id;
+    public int getCardId() {
+        return CardID;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.CardID = id;
     }
 }
 

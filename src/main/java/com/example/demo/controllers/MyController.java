@@ -46,7 +46,7 @@ public class MyController {
 	
 	@DeleteMapping("/delete")
 	public ResponseEntity<String> deleteCard(@RequestBody DelCardDTO del) {
-	    int id = del.getId();
+	    int id = del.getCardId();
 	    if (repo.existsById(id)) {
 	        repo.deleteById(id);
 	        return ResponseEntity.ok("ลบการ์ด id = " + id + " เรียบร้อย");
