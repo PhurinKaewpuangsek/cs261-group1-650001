@@ -97,6 +97,9 @@
     let changed = false
     const rows = arr.map((r) => {
       const n = { ...r }
+	  
+	  /*console.log(n)*/
+	  
       // mapping จากชื่อคีย์ที่อาจเคยใช้ใน review.html เดิม
       if (n.subject && !n.course) { n.course = String(n.subject).trim(); changed = true }
       if (n.title && !n.course) { n.course = String(n.title).trim(); changed = true }
@@ -159,8 +162,8 @@
   const matchFilter = (r) => {
     const q = state.q.trim().toLowerCase()
     const passQ = !q || (
-      (r.course||'').toLowerCase().includes(q) ||
-      (r.professor||'').toLowerCase().includes(q) ||
+      (r.name||'').toLowerCase().includes(q) ||
+      (r.prof||'').toLowerCase().includes(q) ||
       (r.comment||'').toLowerCase().includes(q)
     )
     const passStar = state.stars.size === 0 || state.stars.has(+r.rating)
@@ -307,7 +310,7 @@
     const back = qs('#btnBack')
     if(back){
       back.addEventListener('click', ()=>{
-        history.length > 1 ? history.back() : (window.location.href='login.html')
+        (window.location.href='/')
       })
     }
 

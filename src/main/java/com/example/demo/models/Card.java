@@ -1,21 +1,29 @@
 package com.example.demo.models;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Card")
+@Table(name = "card")
 public class Card {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@Column(columnDefinition = "name")
+	
+	@Column(name = "name", nullable = false, length = 100)
 	private String name;
-	@Column(columnDefinition = "prof")
+	
+	@Column(name = "prof", length = 100)
 	private String prof;
-	@Column(columnDefinition = "name")
+	
+	@Column(name = "rating", nullable = false)
+    @Min(value = 1, message = "rating ต้องไม่ต่ำกว่า 1")
+    @Max(value = 5, message = "rating ต้องไม่เกิน 5")
 	private int rating;
-	@Column(columnDefinition = "description")
+	
+	@Column(name = "description", columnDefinition = "TEXT")
 	private String description;
 	
 	public Card( String name, String prof, int rating, String description) {
