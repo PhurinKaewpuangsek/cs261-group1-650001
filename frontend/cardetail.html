@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Detail - CSTU</title>
+    <link rel="stylesheet" href="carddetail.css">
+    <script src="carddetail.js" defer></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">CSTU</div>
+        <a href="dashboard.html" class="menu-item active" style="text-decoration: none; color: inherit;">
+            <span>🏠</span>
+            <span>overview</span>
+        </a>
+        <a href="review.html" class="menu-item" style="text-decoration: none; color: inherit;">
+            <span>📝</span>
+            <span>write review</span>
+        </a>
+        <div class="logout">
+            <span>👤</span>
+            <span>Log-out</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h1>Review Detail</h1>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search by course name or code (e.g., CS111, Data Structures)">
+                <button class="search-btn" onclick="searchReview()">Search</button>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <a href="dashboard.html" class="back-button" style="text-decoration: none;">
+                <span>←</span>
+            </a>
+
+            <h2 class="page-title" id="pageTitle">Loading...</h2>
+
+            <!-- Review Card -->
+            <div class="review-card" id="reviewCard">
+                <p style="text-align: center; padding: 20px;">Loading review...</p>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <div class="comment-input-area">
+                    <input type="text" class="comment-input" id="commentInput" placeholder="Add a comment...">
+                    <button class="submit-btn" onclick="addComment()">submit</button>
+                </div>
+
+                <div id="commentsList">
+                    <!-- Comments will be loaded dynamically -->
+                </div>
+                    </div>
+                    <div class="comment-time">1 day ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
