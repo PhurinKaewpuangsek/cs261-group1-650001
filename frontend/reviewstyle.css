@@ -238,3 +238,24 @@ textarea {
   outline: 2px solid rgba(255, 204, 0, .35);
   transform: scale(1.08);
 }
+
+
+
+.subject-section-group {
+  display: flex;
+  justify-content: space-between; 
+  gap: 20px; 
+}
+
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+}
+
+
+.form-field input {
+  width: 100%;
+  box-sizing: border-box; 
+}
