@@ -43,12 +43,11 @@ body {
 }
 
 .toggle-btn {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgb(255, 255, 255);
   border: none;
   border-radius: 20px;
   padding: 8px 18px;
-  color: #fff;
-  cursor: pointer;
+  color: #ff9900;
   font-weight: bold;
   transition: 0.2s;
 }
