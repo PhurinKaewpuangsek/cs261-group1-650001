@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Review History - CSTU</title>
+
+  <!-- ใช้ CSS เดิมของเพื่อนให้หน้าตาโทนเดียวกัน -->
+  <link rel="stylesheet" href="carddetail.css">
+  <!-- ถ้ามีของเสริมเฉพาะหน้านี้ค่อยเพิ่ม history.css ภายหลัง -->
+  <script src="review-history.js" defer></script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">CSTU</div>
+
+    <a href="dashboard.html" class="menu-item" style="text-decoration:none;color:inherit;">
+      <span>🏠</span><span>overview</span>
+    </a>
+    <a href="review.html" class="menu-item" style="text-decoration:none;color:inherit;">
+      <span>📝</span><span>write review</span>
+    </a>
+    <a href="review-history.html" class="menu-item active" style="text-decoration:none;color:inherit;">
+      <span>📚</span><span>my reviews</span>
+    </a>
+
+    <div class="logout"><span>👤</span><span>Log-out</span></div>
+  </div>
+
+  <!-- Main -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <h1>Review History</h1>
+      <div class="search-container">
+        <input id="filterInput" class="search-input" type="text"
+               placeholder="Filter by course code / name / professor">
+        <button class="search-btn" onclick="applyFilter()">Filter</button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content-area">
+      <a href="dashboard.html" class="back-button" style="text-decoration:none;"><span>←</span></a>
+      <h2 class="page-title" id="pageTitle">My reviews</h2>
+
+      <!-- แถบสรุป -->
+      <div id="summary" style="margin-bottom:16px;color:#666;font-size:14px;"></div>
+
+      <!-- รายการรีวิวจะถูก render ตรงนี้ -->
+      <div id="historyList"></div>
+
+      <!-- Pagination เล็กๆ -->
+      <div id="pager" style="margin-top:20px; display:flex; gap:8px;">
+        <button class="back-button" onclick="prevPage()">‹ Prev</button>
+        <div id="pageInfo" style="align-self:center; padding:0 8px;"></div>
+        <button class="back-button" onclick="nextPage()">Next ›</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
