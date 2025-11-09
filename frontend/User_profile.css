@@ -1,0 +1,350 @@
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    display: flex; 
+    flex-direction: column; 
+}
+
+
+.main-container {
+    display: flex;
+    flex-grow: 1; 
+    min-height: 0; 
+
+}
+
+
+
+.sidebar {
+    flex-basis: 250px;
+    flex-shrink: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fef4e6; 
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-image: url('loginsource/cstu.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-color: #ffffff; 
+    margin: 0 auto 20px auto;
+}
+
+.navigation ul {
+    list-style: none;
+}
+
+.navigation li {
+    margin-bottom: 10px;
+}
+
+.navigation li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.navigation li a:hover {
+    background-color: #fbe6c4;
+}
+
+.navigation li.active {
+    background-color: #333;
+}
+
+.navigation li.active a {
+    color: #fff;
+}
+
+.logout-btn {
+    margin-top: auto; 
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #f4f4f4;
+}
+
+
+.main-content {
+    flex: 1; 
+    background-color: #fff;
+    overflow-y: auto; 
+}
+
+.content-header {
+    background: linear-gradient(90deg, #ffc107, #f7a02e);
+    height: 150px;
+    border-top-left-radius: 20px;
+}
+
+.profile-body {
+    padding: 0 40px 40px 40px;
+}
+
+.profile-top-section {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 30px;
+    margin-top: -75px; 
+}
+
+.avatar-container {
+    flex-shrink: 0;
+}
+
+.avatar-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header-text {
+    margin-left: 20px;
+}
+
+.profile-header-text h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-header-text p {
+    color: #777;
+    font-size: 14px;
+}
+
+.save-btn {
+    margin-left: auto; 
+    background-color: #f7a02e;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.save-btn:hover {
+    background-color: #e69123;
+}
+
+.profile-form .form-group {
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+}
+
+.form-group:last-child {
+    border-bottom: none;
+}
+
+.form-group label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 60%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+
+.photo-upload-area {
+    display: flex;
+    align-items: center;
+}
+
+.photo-upload-area {
+    display: flex;
+    align-items: center;
+}
+
+
+.photo-preview-container {
+    position: relative; 
+    width: 40px;  
+    height: 40px;
+    margin-right: 20px; 
+}
+
+
+.photo-preview {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50px;
+    object-fit: cover;
+    background-color: rgb(240, 240, 240);
+   
+}
+
+
+.icon-btn {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    
+  
+    background-color: rgba(0, 0, 0, 0.3);
+    color: rgb(0, 0, 0);
+    border-radius: 10px; 
+    border: none;
+    cursor: pointer;
+
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px; 
+
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.photo-preview-container:hover .icon-btn {
+    opacity: 1;
+}
+
+.photo-buttons {
+    display: flex;
+}
+
+.delete-btn, .upload-btn {
+    margin-left: 10px;
+    border: none;               
+    padding: 8px 16px;          
+    border-radius: 20px;       
+    cursor: pointer;          
+    font-weight: bold;         
+}
+
+/* (สไตล์สีของปุ่ม - คงเดิม) */
+.delete-btn {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.upload-btn {
+    background-color: #f7a02e;
+    color: white;
+}
+
+
+/* ========== RESPONSIVE (สำหรับจอมือถือ) ========== */
+
+@media (max-width: 768px) {
+    
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-basis: auto; 
+        width: 100%;
+    }
+
+_    .logout-btn {
+        margin-top: 20px; 
+    }
+
+    .main-content {
+        flex: none; 
+        width: 100%;
+    }
+
+    .profile-body {
+        padding: 0 20px 20px 20px; 
+    }
+
+    .profile-top-section {
+        flex-direction: column; 
+        align-items: center; 
+        margin-top: -60px; 
+        text-align: center;
+    }
+
+    .profile-header-text {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .save-btn {
+        margin-left: 0; 
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .form-group input[type="text"] {
+        width: 100%; 
+    }
+
+    .photo-upload-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .photo-buttons {
+        margin-top: 15px;
+    }
+
+    .delete-btn, .upload-btn {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+}

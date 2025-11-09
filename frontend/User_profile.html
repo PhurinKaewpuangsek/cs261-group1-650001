@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User_Profile</title>
+    <link rel="stylesheet" href="User_profile.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="logo-img">
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#">Write Review</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li class="active"><a href="#">My Profile</a></li>
+                    <li><a href="#">Review History</a></li>
+                </ul>
+            </nav>
+            <button class="logout-btn">Log-out</button>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header"></div>
+
+            <div class="profile-body">
+                <div class="profile-top-section">
+                    <div class="avatar-container">
+                        <img src="Avatar/avatar4.jpg" alt="Profile Avatar" class="avatar-img">
+                    </div>
+                    <div class="profile-header-text">
+                        <h2>Profile</h2>
+                        <p>Upload your photo and personal details</p>
+                    </div>
+                    <button class="save-btn">Save</button>
+                </div>
+
+                <form class="profile-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Name">
+                    </div>
+
+                <div class="form-group">
+                    <label>Your Photo</label>
+                    <p class="form-subtitle">Upload your photo</p>
+                    <div class="photo-upload-area">
+                
+                        <div class="photo-preview-container">
+                            <img src="User_profile/Camera.png" alt="Photo Preview" class="photo-preview">
+                            <button type="button" class="icon-btn"><i class="fa-solid fa-camera"></i></button>
+                        </div>
+                
+                        <div class="photo-buttons">
+                            <button type="button" class="delete-btn">Delete</button>
+                            <button type="button" class="upload-btn">Upload</button>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="form-group">
+                        <label for="bio">Your Bio</label>
+                        <p class="form-subtitle">Write a short introduction</p>
+                        <textarea id="bio" name="bio" rows="4" placeholder="Add a short bio...."></textarea>
+                    </div>
+                </form>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
