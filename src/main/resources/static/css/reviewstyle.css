@@ -57,7 +57,7 @@ body {
   color: #ff9900;
 }
 
-/* ✅ Body */
+/*  Body */
 .review-form-body {
   display: flex;
   justify-content: space-between;
@@ -148,7 +148,7 @@ textarea {
 .too-long { color: red; }
 .ok { color: green; }
 
-/* ✅ Avatar Picker */
+/*  Avatar Picker */
 .form-right {
   width: 250px;
   text-align: center;
