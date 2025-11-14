@@ -65,7 +65,11 @@ button{font:inherit}
 a{color:inherit;text-decoration:none}
 
 /* ================= LAYOUT ================= */
-.page{ display:flex; min-height:100dvh; overflow:hidden }
+.page {
+  display: flex;
+  min-height: 100dvh;
+  overflow: hidden;
+}
 
 /* Sidebar */
 .sidebar{
@@ -114,13 +118,21 @@ a{color:inherit;text-decoration:none}
 }
 .avatar__icon{font-size:22px}
 .logout{
+  color: rgb(0, 0, 0);
   display:inline-block;margin-top:4px; padding:9px 12px;border-radius:10px;
-  background:var(--surface); border:1px solid var(--line);
+  background:var(--surface); border:2px solid rgb(255, 128, 0);
 }
 .logout:hover{filter:brightness(1.04)}
 
 /* Main */
-.main{ flex:1; min-width:0; display:flex; flex-direction:column }
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+}
 
 /* Toolbar */
 .toolbar{
@@ -157,6 +169,10 @@ a{color:inherit;text-decoration:none}
 .btn:hover{filter:brightness(1.04)}
 .btn:active{transform:translateY(1px)}
 .btn--circle{
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width:38px;height:38px;border-radius:999px;
   background:var(--surface); color:var(--text); border:1px solid var(--line);
   box-shadow: var(--shadow-1);
@@ -214,7 +230,7 @@ a{color:inherit;text-decoration:none}
 @media (max-width: 780px){ .grid{grid-template-columns: repeat(4,1fr)} }
 @media (max-width: 560px){ .grid{grid-template-columns: repeat(2,1fr)} }
 
-/* Card (base) */
+/* Card */
 .card{
   grid-column: span 4;
   background: var(--surface);
@@ -225,7 +241,13 @@ a{color:inherit;text-decoration:none}
   min-height:220px;
   overflow:hidden;
   position:relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 138, 31, 0.2);
+}
+
 .card__head{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
   padding:14px 16px; border-bottom:1px solid var(--line);
@@ -247,14 +269,40 @@ a{color:inherit;text-decoration:none}
   color:var(--muted); font-size:12px; border:1px solid var(--line);
 }
 
-/* Actions */
-.card .act{ display:flex; gap:8px }
-.btn--danger{
-  background:linear-gradient(135deg,#ff8585,#ff4d4d);
-  color:white; box-shadow:0 4px 8px rgba(255,0,0,.15);
+/* Avatar in card */
+.card__topRight{
+  display:flex; align-items:center; gap:10px;
+}
+.card__avatar{
+  width:36px; height:36px; border-radius:50%;
+  object-fit:cover;
+  border:1px solid var(--line);
+  box-shadow: var(--shadow-1);
 }
 
-/* Empty state */
+/* Footer avatar + name */
+.card-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 6px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-left.anonymous span.kbd {
+  color: #999;
+  font-style: italic;
+}
+
+/* Empty */
 .empty{
   grid-column: 1 / -1; text-align:center;
   padding:46px 18px;
@@ -280,20 +328,16 @@ a{color:inherit;text-decoration:none}
 }
 .toast.is-show{opacity:1; transform:translateY(0)}
 
-/* ==================== LIGHT-ONLY TWEAKS (DASHBOARD) ==================== */
-/* ทั้งบล็อกนี้จะมีผลเฉพาะหน้า dashboard เพราะ guest ใส่ .theme-dark */
+/* Light Theme Customizations */
 .page:not(.theme-dark) body,
 .page:not(.theme-dark){
-  /* พื้นหลังให้อ่านง่ายขึ้น—คุมความเหลืองนวล */
   background: linear-gradient(180deg,#fff9ee 0%,#fff3d6 40%,#fff8e9 100%);
 }
 
-/* Sidebar สีเข้มขึ้นนิดเพื่อแยกเลเยอร์ */
 .page:not(.theme-dark) .sidebar--orange{
   background: linear-gradient(180deg, #ffcc80 0%, #ffe0b2 60%, #fffaf2 100%);
 }
 
-/* Toolbar/Filterbar เด่นชัดขึ้น */
 .page:not(.theme-dark) .toolbar{
   background: linear-gradient(180deg, #ffd16b 0%, #ffb347 90%);
   color:#4b2600;
@@ -302,7 +346,6 @@ a{color:inherit;text-decoration:none}
   background: linear-gradient(180deg, #fff4dc 0%, #ffe3a0 100%);
 }
 
-/* Search และ CTA ให้อ่านง่ายขึ้น */
 .page:not(.theme-dark) .search{
   background:#fff;
   border:1px solid rgba(255,138,31,.3);
@@ -314,13 +357,11 @@ a{color:inherit;text-decoration:none}
   color:#2b1900;
 }
 
-/* Typography เสริมคอนทราสต์ */
 .page:not(.theme-dark) .title{ font-size:24px; color:#3a2000 }
 .page:not(.theme-dark) .card__course{ color:#2f1a00 }
 .page:not(.theme-dark) .card__meta{ color:#9c8b70 }
 .page:not(.theme-dark) .helperbar{ font-size:15px; color:#5a4a2d }
 
-/* การ์ดอ่านง่าย—ขาวอมครีม + เงานุ่ม + แถบส้มซ้ายเป็นองค์ประกอบ */
 .page:not(.theme-dark) .card{
   background:#fffefb;
   box-shadow:0 4px 12px rgba(0,0,0,.08);
@@ -332,15 +373,3 @@ a{color:inherit;text-decoration:none}
   opacity:.8;
 }
 
-/* ด้านขวาบนของการ์ด: ดาว + avatar */
-.card__topRight{
-  display:flex; align-items:center; gap:10px;
-}
-
-/* avatar บนการ์ดรีวิว */
-.card__avatar{
-  width:36px; height:36px; border-radius:50%;
-  object-fit:cover;
-  border:1px solid var(--line);
-  box-shadow: var(--shadow-1);
-}
