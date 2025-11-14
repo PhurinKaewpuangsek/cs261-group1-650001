@@ -4,7 +4,7 @@
 */
 ;(() => {
   const LS_KEY = 'courseReviews'
-  const LIMIT = 220; // ✅ จำกัดความยาวรีวิวเพื่อไม่ให้ทะลุการ์ด
+  const LIMIT = 220; //  จำกัดความยาวรีวิวเพื่อไม่ให้ทะลุการ์ด
 
   // ---------- helpers ----------
   const qs  = (sel, el=document) => el.querySelector(sel)
@@ -151,7 +151,7 @@
       const t = qs('textarea'); comment = t ? String(t.value).trim() : ''
     }
 
-    // ✅ กันยาวเกิน: ไม่ให้บันทึกถ้าเกิน และ focus ให้แก้
+    //  กันยาวเกิน: ไม่ให้บันทึกถ้าเกิน และ focus ให้แก้
     if (comment.length > LIMIT) {
       ta?.focus()
       return
