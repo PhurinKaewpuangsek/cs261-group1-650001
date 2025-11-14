@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSTU Pantip — Profile</title>
+
+  <!-- ✅ ใช้ CSS จาก Spring Boot -->
+  <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+
+<body class="page">
+  <!-- Sidebar -->
+  <aside class="sidebar sidebar--orange">
+    <div class="sidebar__section">
+      <a th:href="@{/dashboard}" class="logo logo--img" aria-label="CSTU Pantip">
+        <img th:src="@{/dasboardSource/darkpanthip.png}" alt="CSTU Pantip logo" class="brand-img">
+      </a>
+
+      <nav class="nav">
+        <a class="nav__link" th:href="@{/dashboard}"><span>🏠</span> Overview</a>
+        <a class="nav__link" th:href="@{/dashboard/review}"><span>📝</span> Write Review +</a>
+        <a class="nav__link is-active" th:href="@{/dashboard/profile}"><span>👤</span> Profile</a>
+        <a class="nav__link" th:href="@{/dashboard/history}"><span>🕓</span> History</a>
+      </nav>
+    </div>
+
+    <div class="sidebar__section">
+      <a class="logout" href="#" id="btnLogout">Log-out</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <header class="toolbar">
+      <div class="toolbar__left">
+        <button class="btn btn--circle" onclick="window.history.back()">‹</button>
+        <h1 class="title">Profile</h1>
+      </div>
+    </header>
+
+    <section class="profile-wrapper">
+      <div class="profile-card">
+        <div class="profile-header">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Avatar" class="profile-avatar" />
+          <div class="profile-name">
+            <h2>FirstName LastName (th)</h2>
+            <p class="profile-sub">FirstName LastName (en)</p>
+            <p class="profile-email">email@dome.tu.ac.th</p>
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <div class="info-row">
+            <span class="label">คณะ</span>
+            <span class="value">คณะวิทยาศาสตร์และเทคโนโลยี</span>
+          </div>
+
+          <div class="info-row">
+            <span class="label">ภาควิชา</span>
+            <span class="value">ปริญญาตรี ภาคพิเศษ สาขาวิชาวิทยาการคอมพิวเตอร์</span>
+          </div>
+
+          <div class="info-row">
+            <span class="label">สถานะ</span>
+            <span class="value">นักศึกษาปัจจุบัน</span>
+          </div>
+
+          <div class="info-row">
+            <span class="label">มหาวิทยาลัย</span>
+            <span class="value">ธรรมศาสตร์ (Thammasat University)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const data = JSON.parse(localStorage.getItem("studentData") || "{}");
+
+      // ถ้ายังไม่ได้ login ให้กลับไปหน้า index
+      if (!data.username) {
+        alert("กรุณาเข้าสู่ระบบก่อน");
+        window.location.href = "/index.html";
+        return;
+      }
+
+      // ✅ ใส่ข้อมูลผู้ใช้ในหน้า Profile
+      document.querySelector(".profile-name h2").textContent = data.displayname_th || "ไม่พบข้อมูล";
+      document.querySelector(".profile-sub").textContent = data.displayname_en || "-";
+      document.querySelector(".profile-email").textContent = data.email || "-";
+
+      // ✅ ใส่ข้อมูลอื่น ๆ
+      document.querySelector(".info-row:nth-child(1) .value").textContent = data.faculty || "-";
+      document.querySelector(".info-row:nth-child(2) .value").textContent = data.department || "-";
+      document.querySelector(".info-row:nth-child(3) .value").textContent = "นักศึกษาปัจจุบัน";
+      document.querySelector(".info-row:nth-child(4) .value").textContent = "ธรรมศาสตร์ (Thammasat University)";
+
+      // ✅ ปุ่ม Logout (เวอร์ชันใหม่ ปิด Auto Login)
+      const logoutBtn = document.getElementById("btnLogout");
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (confirm("คุณต้องการออกจากระบบหรือไม่?")) {
+            // 🔹 ลบข้อมูลทั้งหมดที่เกี่ยวข้อง
+            localStorage.removeItem("studentData");
+            localStorage.removeItem("reviewFeedback");
+            localStorage.removeItem("userFeedbackRecords");
+            localStorage.removeItem("cstuRememberCreds");        // ✅ ล้าง Remember Credentials
+            localStorage.setItem("cstuRememberEnabled", "false"); // ✅ ปิด Auto Login
+            sessionStorage.removeItem("isAdmin");
+
+            // 🔹 กลับไปหน้า Login (index.html)
+            window.location.href = "/index.html";
+          }
+        });
+      }
+    });
+  </script>
+  </script>
+</body>
+</html>
