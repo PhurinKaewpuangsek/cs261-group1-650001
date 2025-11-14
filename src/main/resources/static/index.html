@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSTU Login</title>
-    <link rel="stylesheet" href="css/loginstyle.css" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CSTU Login</title>
+
+	<!-- ✅ ใช้ absolute path -->
+	<link rel="stylesheet" href="/css/loginstyle.css" />
 </head>
 
 <body>
-    <div class="container">
-        <div class="topbar">
-            <img src="src/source/panthip.png" alt="Pantip Logo" class="pantip-logo" />
-        </div>
+	<div class="container">
+		<div class="topbar">
+			<!-- ✅ แก้ path ให้ตรงกับที่อยู่จริง -->
+			<img src="/source/panthip.png" alt="Pantip Logo" class="pantip-logo" />
+		</div>
 
-        <div class="login-box">
-            <img src="src/source/cstu.jpg" alt="CS TU Logo" class="logo" />
+		<div class="login-box">
+			<!-- ✅ แก้ path -->
+			<img src="/source/cstu.jpg" alt="CS TU Logo" class="logo" />
 
-            <form id="login-form" autocomplete="off">
-                <input id="studentId" type="text" placeholder="student-id" required autocomplete="username" />
-                <div class="password-field">
-                    <input id="passwordInput" type="password" placeholder="Password" required
-                        autocomplete="current-password" aria-describedby="togglePwDesc" />
-                    <button type="button" id="togglePassword" class="toggle-pw" aria-pressed="false"
-                        aria-label="Show password" title="Show password">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
-                            focusable="false">
-                            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </button>
-                    <span id="togglePwDesc" class="sr-only">Toggle password visibility</span>
-                </div>
+			<form id="login-form" autocomplete="off">
+				<input id="studentId" type="text" placeholder="student-id" required autocomplete="username" />
+				<div class="password-field">
+					<input id="passwordInput" type="password" placeholder="Password" required
+						autocomplete="current-password" aria-describedby="togglePwDesc" />
+					<button type="button" id="togglePassword" class="toggle-pw" aria-pressed="false"
+						aria-label="Show password" title="Show password">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+							focusable="false">
+							<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" stroke="currentColor"
+								stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+						</svg>
+					</button>
+					<span id="togglePwDesc" class="sr-only">Toggle password visibility</span>
+				</div>
 
-                <p id="loginError" class="error-msg"></p>
+				<p id="loginError" class="error-msg"></p>
 
-                <label class="remember">
-                    <!-- เพิ่ม id เพื่อใช้กับสคริปต์ -->
-                    <input type="checkbox" id="rememberMe" /> Remember me
-                </label>
-                <button type="submit" class="login-btn">Log in</button>
-            </form>
+				<label class="remember">
+					<input type="checkbox" id="rememberMe" /> Remember me
+				</label>
+				<button type="submit" class="login-btn">Log in</button>
+			</form>
 
-            <a href="/dashboard/guest" id="readModeLink" class="read-mode">Continue in read mode</a>
-        </div>
-    </div>
+			<a href="/dashboard/guest" id="readModeLink" class="read-mode">Continue in read mode</a>
+		</div>
+	</div>
 
-    <script src="javascript/loginscript.js"></script>
+	<!-- ✅ ใช้ absolute path -->
+	<script src="/javascript/loginscript.js"></script>
 </body>
-
 </html>
