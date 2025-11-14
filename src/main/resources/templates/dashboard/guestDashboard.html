@@ -7,24 +7,43 @@
   <link rel="stylesheet" href="/css/dashboard-style.css" />
   <style>
     /* ทำปุ่มเขียนรีวิวในโหมด Guest ให้เป็นปุ่มปิด/กดไม่ได้ */
-    .nav__link--disabled{
-      opacity:.6;
-      cursor:not-allowed;
-      background:transparent !important;
+    .nav__link--disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      background: transparent !important;
       outline: 1px dashed rgba(255,255,255,.18);
     }
-    .nav__link--disabled:hover{ filter:none }
+    .nav__link--disabled:hover { filter: none }
+
     /* ให้ปุ่มในเมนูวางตัวเหมือนลิงก์ */
-    button.nav__link{ width:100%; text-align:left }
-    /* ปุ่มแจ้งเตือน/ลิงก์ล็อกอินด้านบนขวา */
-    .helperbar__right .btn{
-      background:linear-gradient(135deg, var(--accent), #7de3ff);
-      color:#001018;
+    button.nav__link { width: 100%; text-align: left }
+
+    /* ปุ่ม Log in ด้านขวา */
+    .helperbar__right .btn {
+      background: linear-gradient(135deg, var(--accent), #7de3ff);
+      color: #001018;
     }
-    /* แถบแจ้งเตือนเล็ก ๆ เมื่อผู้ใช้กดปุ่มที่ปิดอยู่ */
-    .toast--warn{
+
+    /* แถบแจ้งเตือนเล็ก ๆ */
+    .toast--warn {
       border-color: rgba(255,200,0,.4);
       box-shadow: 0 10px 30px rgba(255,200,0,.15);
+    }
+
+    /* ปุ่ม log-in ที่ sidebar */
+    #loginBtnSidebar {
+      color: aliceblue;
+    }
+
+    /* การ์ดในโหมด guest: ไม่สามารถกดได้ */
+    .card.card--guest {
+      cursor: not-allowed;
+      user-select: none;
+      opacity: 0.9;
+      transition: opacity .2s ease;
+    }
+    .card.card--guest:hover {
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -32,13 +51,13 @@
   <!-- Sidebar (dark) -->
   <aside class="sidebar sidebar--black">
     <div class="sidebar__section">
-      <!-- โลโก้พาไปหน้า login (เหมาะกับ guest) -->
-      <a href="/" class="logo logo--img" aria-label="CSTU Pantip">
-        <img src="/src/dasboardSource/panthip.png" alt="CSTU Pantip logo" class="brand-img">
+      <!-- โลโก้พาไปหน้า login -->
+      <a href="/index.html" class="logo logo--img" aria-label="CSTU Pantip">
+        <img src="/source/panthip.png" alt="CSTU Pantip logo" class="brand-img">
       </a>
 
       <nav class="nav" aria-label="Sidebar">
-        <a class="nav__link is-active" href="#"><span>🏠</span> overview</a>
+        <a class="nav__link is-active" href="#"><span>🏠</span> Overview</a>
 
         <!-- ปุ่มแทน write review (ปิดการใช้งาน) -->
         <button
@@ -54,8 +73,7 @@
     </div>
 
     <div class="sidebar__section">
-      <div class="avatar"><span class="avatar__icon">👤</span></div>
-      <a class="logout" href="/" id="loginBtnSidebar">Log-in</a>
+      <a class="logout" href="/index.html" id="loginBtnSidebar">Log-in</a>
     </div>
   </aside>
 
@@ -64,7 +82,7 @@
     <header class="toolbar">
       <div class="toolbar__left">
         <button class="btn btn--circle" id="btnBack" title="Back" aria-label="Back">‹</button>
-        <h1 class="title">Dashboard (read mode) </h1>
+        <h1 class="title">Dashboard (read mode)</h1>
         <span class="badge" id="resultMeta" aria-live="polite">0 reviews</span>
       </div>
 
@@ -92,8 +110,7 @@
         <span class="hint">Tip:</span> ใช้ช่องค้นหา + เลือกดาว เพื่อดูรีวิวที่ตรงใจ (โหมดอ่านอย่างเดียว)
       </div>
       <div class="helperbar__right">
-        <!-- ปุ่มไปล็อกอินแทนที่จะให้เขียนรีวิว -->
-        <a class="btn" href="/" id="loginCtaTop">Log in</a>
+        <a class="btn" href="/index.html" id="loginCtaTop">Log in</a>
       </div>
     </section>
 
@@ -102,16 +119,13 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="/javascript/dashboard-script.js"></script>
+  <!-- ✅ Guest-only Dashboard Script -->
+  <script src="/javascript/guest-dashboard.js"></script>
+
   <script>
-    // ใช้ logic แสดงรีวิว/ค้นหาเหมือนเดิม แต่บังคับเป็นโหมด guest
-    try { sessionStorage.setItem('isAdmin', 'false'); } catch (e) {}
-
-    CSTU.initDashboard();
-
-    // ปุ่ม Back: ถ้าไม่มี history ให้กลับไปหน้า login
+    // ปุ่ม Back: ถ้าไม่มี history ให้กลับหน้า Login
     document.getElementById('btnBack')?.addEventListener('click', ()=>{
-      history.length > 1 ? history.back() : (window.location.href='/');
+      history.length > 1 ? history.back() : (window.location.href='/index.html');
     });
 
     // คลิกปุ่มที่ปิดไว้ให้ขึ้นแจ้งเตือนแทน
