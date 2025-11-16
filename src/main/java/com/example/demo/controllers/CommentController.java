@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/comments")
-@CrossOrigin(origins = "http://localhost:9090") // ✅ ให้ frontend เรียกได้
+@CrossOrigin(origins = "http://localhost:8081") // ✅ ให้ frontend เรียกได้
 public class CommentController {
 
     private final CommentService service;

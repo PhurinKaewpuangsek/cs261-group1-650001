@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:9090") // ✅ อนุญาตให้ frontend เข้าถึง
+@CrossOrigin(origins = "http://localhost:8081") // ✅ อนุญาตให้ frontend เข้าถึง
 @RestController
 @RequestMapping("/api/reviews")
 public class ReviewController {

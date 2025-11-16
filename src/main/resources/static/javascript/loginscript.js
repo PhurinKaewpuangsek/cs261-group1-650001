@@ -75,7 +75,7 @@ function clearRemember() {
 async function autoLogin(username, password) {
   try {
     const response = await fetch(
-      `http://localhost:9090/api/auth/login?username=${username}&password=${password}`,
+      `http://localhost:8081/api/auth/login?username=${username}&password=${password}`,
       { method: "POST" }
     );
 
@@ -116,7 +116,7 @@ form.addEventListener("submit", async function (e) {
   try {
     // ✅ เรียก TU API ผ่าน Backend (Stateless)
     const response = await fetch(
-      `http://localhost:9090/api/auth/login?username=${studentId}&password=${password}`,
+      `http://localhost:8081/api/auth/login?username=${studentId}&password=${password}`,
       { method: "POST" }
     );
 

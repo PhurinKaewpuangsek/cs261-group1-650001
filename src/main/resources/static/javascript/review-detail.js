@@ -1,7 +1,7 @@
 // review-detail.js (ปุ่มค้างสีส้มถาวร)
 (() => {
-	const API_REVIEW = "http://localhost:9090/api/reviews";
-	const API_COMMENT = "http://localhost:9090/api/comments";
+	const API_REVIEW = "http://localhost:8081/api/reviews";
+	const API_COMMENT = "http://localhost:8081/api/comments";
 	const qs = (sel, el = document) => el.querySelector(sel);
 
 	const params = new URLSearchParams(window.location.search);

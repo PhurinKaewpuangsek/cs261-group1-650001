@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:9090") // ❌ ไม่ต้องใช้ allowCredentials เพราะไม่ใช้ cookie
+@CrossOrigin(origins = "http://localhost:8081") // ❌ ไม่ต้องใช้ allowCredentials เพราะไม่ใช้ cookie
 public class AuthController {
 
     @Autowired

@@ -1,5 +1,5 @@
 (() => {
-  const API_BASE = "http://localhost:9090/api/reviews";
+  const API_BASE = "http://localhost:8081/api/reviews";
   const historyList = document.getElementById("historyList");
   const usernameEl = document.getElementById("username");
 
