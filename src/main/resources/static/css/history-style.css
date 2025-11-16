@@ -1,0 +1,175 @@
+/* ============================ */
+/* ✅ โครงสร้างหลักของหน้า History */
+/* ============================ */
+.history-section {
+  padding: 30px 40px;
+  background: linear-gradient(to bottom, #fffaf0, #fff3d6);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ============================ */
+/* ✅ ส่วนหัว (แสดงชื่อผู้ใช้) */
+/* ============================ */
+.user-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #ffb347;
+  object-fit: cover;
+  background-color: #fff;
+}
+
+/* ============================ */
+/* ✅ ลิสต์การ์ดรีวิว */
+/* ============================ */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ============================ */
+/* ✅ การ์ดแต่ละรีวิว */
+/* ============================ */
+.history-card {
+  background: #fffefb;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 18px 24px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* hover แล้วมีเงาและขอบส้มอ่อน */
+.history-card:hover {
+  box-shadow: 0 6px 18px rgba(255, 163, 26, 0.25);
+  border-color: #ffb84d;
+  transform: translateY(-3px);
+}
+
+/* ============================ */
+/* ✅ ส่วนบนของการ์ด */
+/* ============================ */
+.history-card .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.history-card .top div:first-child {
+  color: #888;
+}
+
+/* ============================ */
+/* ✅ เนื้อหารีวิว */
+/* ============================ */
+.review-body {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.history-card .review-text {
+  font-size: 15px;
+  color: #333;
+  margin: 8px 0 14px;
+  line-height: 1.6;
+}
+
+/* ============================ */
+/* ✅ ส่วนล่าง (Professor / Course / ปุ่ม) */
+/* ============================ */
+.history-card .bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #333;
+  align-items: center;
+}
+
+.history-card .meta strong {
+  color: #ff8c00;
+}
+
+/* ============================ */
+/* ✅ ปุ่ม Feedback */
+/* ============================ */
+.footer-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-buttons button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.footer-buttons button:hover {
+  background: #ffe08a;
+  transform: scale(1.05);
+}
+
+/* ============================ */
+/* 🔒 ปุ่มแบบ Readonly (กดไม่ได้) */
+/* ============================ */
+.footer-buttons.readonly button {
+  pointer-events: none; /* ❌ ห้ามกด */
+  opacity: 0.9;
+  background: #fffdf5;
+  border: 1px solid #f1d68f;
+  color: #555;
+  font-weight: 600;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+.footer-buttons.readonly button:hover {
+  background: #fffdf5;
+  transform: none;
+}
+
+/* ============================ */
+/* ✅ Responsive */
+/* ============================ */
+@media (max-width: 768px) {
+  .history-section {
+    padding: 20px 16px;
+  }
+
+  .history-card {
+    padding: 16px;
+  }
+
+  .history-card .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .footer-buttons {
+    justify-content: flex-start;
+  }
+}

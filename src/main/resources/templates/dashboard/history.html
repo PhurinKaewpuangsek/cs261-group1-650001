@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSTU Pantip — Review History</title>
+
+  <!-- ✅ ใช้ path จาก static -->
+  <link rel="stylesheet" th:href="@{/css/dashboard-style.css}">
+  <link rel="stylesheet" th:href="@{/css/history-style.css}">
+</head>
+
+<body class="page">
+  <!-- Sidebar -->
+  <aside class="sidebar sidebar--orange">
+    <div class="sidebar__section">
+      <a th:href="@{/dashboard}" class="logo logo--img">
+        <img th:src="@{/dasboardSource/darkpanthip.png}" alt="CSTU Pantip" class="brand-img" />
+      </a>
+      <nav class="nav">
+        <a class="nav__link" th:href="@{/dashboard}"><span>🏠</span> Overview</a>
+        <a class="nav__link" th:href="@{/dashboard/review}"><span>📝</span> Write Review +</a>
+        <a class="nav__link" th:href="@{/dashboard/profile}"><span>👤</span> Profile</a>
+        <a class="nav__link is-active" th:href="@{/dashboard/history}"><span>🕓</span> History</a>
+      </nav>
+    </div>
+
+    <div class="sidebar__section">
+      <a class="logout" href="#" id="btnLogout">Log-out</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="toolbar">
+      <div class="toolbar__left">
+        <button class="btn btn--circle" onclick="window.history.back()">‹</button>
+        <h1 class="title">Review History</h1>
+      </div>
+    </header>
+
+    <section class="history-section">
+      <div class="user-header">
+        <img th:src="@{/Avatar/Anonymous.png}" class="user-avatar" alt="user">
+        <span class="user-name">User: <strong id="username">Anonymous</strong></span>
+      </div>
+
+      <div id="historyList" class="history-list"></div>
+    </section>
+  </main>
+
+  <!-- ✅ โหลด script จาก /javascript -->
+  <script th:src="@{/javascript/history-script.js}" defer></script>
+
+  <!-- ✅ Logout Script -->
+  <script>
+	document.addEventListener("DOMContentLoaded", () => {
+	    const logoutBtn = document.getElementById("btnLogout");
+	    if (logoutBtn) {
+	      logoutBtn.addEventListener("click", (e) => {
+	        e.preventDefault();
+	        if (confirm("คุณต้องการออกจากระบบหรือไม่?")) {
+	          // 🔹 ล้างข้อมูลทั้งหมดใน localStorage / sessionStorage
+	          localStorage.removeItem("studentData");
+	          localStorage.removeItem("reviewFeedback");
+	          localStorage.removeItem("userFeedbackRecords");
+	          localStorage.removeItem("cstuRememberCreds");        // ✅ ล้างข้อมูล Remember Me
+	          localStorage.setItem("cstuRememberEnabled", "false"); // ✅ ปิด Auto Login
+	          sessionStorage.removeItem("isAdmin");
+
+	          // 🔹 กลับไปหน้า Login (index.html)
+	          window.location.href = "/index.html";
+	        }
+	      });
+	    }
+	  });
+  </script>
+</body>
+</html>
