@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSTU Pantip — Review Detail</title>
+
+  <!-- ✅ absolute path -->
+  <link rel="stylesheet" href="/css/dashboard-style.css" />
+  <link rel="stylesheet" href="/css/review-detail.css" />
+</head>
+
+<body class="page">
+  <!-- Sidebar -->
+  <aside class="sidebar sidebar--orange">
+    <div class="sidebar__section">
+      <a href="/dashboard" class="logo logo--img">
+        <!-- ✅ โลโก้ path -->
+        <img src="/dasboardSource/darkpanthip.png" alt="CSTU Pantip" class="brand-img" />
+      </a>
+      <nav class="nav">
+        <a class="nav__link is-active" href="/dashboard"><span>🏠</span> overview</a>
+        <a class="nav__link" href="/dashboard/review"><span>📝</span> Write Review +</a>
+        <a class="nav__link" href="/dashboard/profile"><span>👤</span> Profile</a>
+        <a class="nav__link" href="/dashboard/history"><span>🕓</span> History</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="toolbar">
+      <div class="toolbar__left">
+        <button class="btn btn--circle" onclick="window.history.back()">‹</button>
+        <h1 class="title">Review Detail</h1>
+      </div>
+    </header>
+
+    <div class="frame-box-detail">
+      <div class="box-detail">
+        <div class="box-content">
+          <div class="left-side">
+            <div class="stars">⭐ ⭐ ⭐ ⭐ ☆</div>
+            <div class="rating-number">4/5</div>
+            <p class="review-text">
+              Prof. Somsak explains clearly, but homework load is heavy.
+            </p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="right-side">
+            <div class="comment-item">
+              <!-- ✅ Avatar path -->
+              <img src="/Avatar/avatar1.jpg" alt="User">
+              <div class="comment-body">
+                <p class="name">Johnny Watson</p>
+                <p class="text">Great insight, thanks!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ✅ JS -->
+  <script src="/javascript/review-detail.js"></script>
+</body>
+</html>
